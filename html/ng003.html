@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div ng-app="testApp" ng-controller="ctr">
+	
+	   <ul>
+	   		<li ng-repeat="i in info">
+	   			{{ "姓名:"+ i.name }}
+	   		</li>
+	   		
+	   </ul>
+		
+		
+	</div>
+
+<script src="lib/angular.min.js"></script>
+<script>
+	var  myApp=angular.module('testApp',[]);
+	
+		myApp.controller('ctr',function($scope,$http) {
+			//console.log($http)
+			$http.get('data.json').success(function(data) {
+			
+				//console.log(data);
+				$scope.info=data;
+			
+			})
+			
+		
+		});
+	
+</script>
+</body>
+</html>
